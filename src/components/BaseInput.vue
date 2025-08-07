@@ -66,7 +66,3 @@ input {
 }
 </style>
 
-// Ejemplo para src/stores/auth.js o authStore.js import { ref } from 'vue' export const
-useAuthStore = () => { const userRole = ref(null) const login = async (email, password) => { // Aquí
-iría la llamada real al backend // Simulación: if (email === 'vet@correo.com') { userRole.value =
-'vet' } else { userRole.value = 'owner' } // ...más lógica de login } return { userRole, login } }

@@ -8,7 +8,7 @@
 
     <select v-model="role" required>
       <option disabled value="">Selecciona un rol</option>
-      <option value="owner">Dueño</option>
+      <option value="owner">Agricultor</option>
       <option value="vet">Veterinario</option>
     </select>
 
