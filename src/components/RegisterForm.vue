@@ -3,22 +3,8 @@
     <h2 class="form-title">Registro</h2>
 
     <input v-model="name" type="text" placeholder="Nombre completo" required />
-    <BaseInput
-      v-model="email"
-      type="email"
-      label="Correo Electrónico"
-      placeholder="tu@email.com"
-      required
-      icon="mail"
-    />
-    <BaseInput
-      v-model="password"
-      type="password"
-      label="Contraseña"
-      placeholder="••••••••"
-      required
-      icon="lock"
-    />
+    <input v-model="email" type="email" placeholder="Correo electrónico" required />
+    <input v-model="password" type="password" placeholder="Contraseña" required />
 
     <select v-model="role" required>
       <option disabled value="">Selecciona un rol</option>
