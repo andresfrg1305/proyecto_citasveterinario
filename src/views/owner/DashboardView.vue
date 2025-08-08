@@ -51,6 +51,12 @@
     <div class="login-link" v-if="enviado">
       <span>¡Cita agendada con éxito! Revisa tu correo.</span>
     </div>
+
+    <div v-if="enviado" class="acciones-cita">
+  <button @click="editarCita" class="edit-btn">Editar Cita</button>
+  <button @click="cancelarCita" class="cancel-btn">Cancelar Cita</button>
+</div>
+
   </div>
 </template>
 
@@ -83,7 +89,7 @@ const hoy = computed(() => {
   return `${año}-${mes}-${dia}`
 })
 
-// STORE para guardar citas
+// STORE
 const storeCitas = useAppointmentStore()
 
 const enviarFormulario = () => {
@@ -92,6 +98,11 @@ const enviarFormulario = () => {
     return
   }
 
+  cita.fechaHoraCita = `${fechaSeleccionada.value}T${horaSeleccionada.value}:00`
+  storeCitas.guardarCita({ ...cita })
+  enviado.value = true
+}
+
 const editarCita = () => {
   if (!fechaSeleccionada.value || !horaSeleccionada.value) {
     alert('Por favor, selecciona una fecha y hora para la cita.')
@@ -99,7 +110,7 @@ const editarCita = () => {
   }
 
   cita.fechaHoraCita = `${fechaSeleccionada.value}T${horaSeleccionada.value}:00`
-  storeCitas.editarCita({ ...cita }) // Llamamos método del store
+  storeCitas.editarCita({ ...cita })
   alert('¡Cita actualizada con éxito!')
 }
 
@@ -110,14 +121,8 @@ const cancelarCita = () => {
     alert('Cita cancelada.')
   }
 }
-
-  cita.fechaHoraCita = `${fechaSeleccionada.value}T${horaSeleccionada.value}:00`
-
-  storeCitas.guardarCita({ ...cita })
-
-  enviado.value = true
-}
 </script>
+
 
 <style scoped>
 .register-form {
