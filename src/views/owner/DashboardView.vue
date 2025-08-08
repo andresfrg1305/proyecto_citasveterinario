@@ -92,6 +92,25 @@ const enviarFormulario = () => {
     return
   }
 
+const editarCita = () => {
+  if (!fechaSeleccionada.value || !horaSeleccionada.value) {
+    alert('Por favor, selecciona una fecha y hora para la cita.')
+    return
+  }
+
+  cita.fechaHoraCita = `${fechaSeleccionada.value}T${horaSeleccionada.value}:00`
+  storeCitas.editarCita({ ...cita }) // Llamamos método del store
+  alert('¡Cita actualizada con éxito!')
+}
+
+const cancelarCita = () => {
+  if (confirm('¿Seguro que quieres cancelar esta cita?')) {
+    storeCitas.cancelarCita(cita)
+    enviado.value = false
+    alert('Cita cancelada.')
+  }
+}
+
   cita.fechaHoraCita = `${fechaSeleccionada.value}T${horaSeleccionada.value}:00`
 
   storeCitas.guardarCita({ ...cita })
